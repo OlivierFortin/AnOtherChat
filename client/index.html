@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>An Other chat app</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Chat serveur</h1>
+    <div id="chat">
+        <div id="messages"></div>
+        <form id="chatbox" action="#">
+            <input type="text" id="input" autocomplete="off">
+            <button onclick="sendMessage();">Send</button>
+        </form>
+    </div>
+    <script>
+        const ws = new WebSocket('ws://localhost:8181');
+        ws.onopen = () => {
+            console.log('Connected to server');
+        };
+
+        ws.onmessage = (event) => {
+            console.log(event.data);
+            document.getElementById('messages').innerHTML += event.data + '<br>';
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('input');
+            const message = input.value;
+            input.value = '';
+            ws.send(message);
+        }
+    </script>
+</body>
+</html>

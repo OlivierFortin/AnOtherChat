@@ -1,0 +1,15 @@
+#chat {
+ display: flex;
+ flex-direction: column;
+
+}
+
+
+#messages {
+ flex: 4;
+ min-height: 200px;
+}
+
+#chatbox {
+ flex: 1;
+}

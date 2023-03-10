@@ -1,0 +1,7 @@
+services: 
+   serveur:
+     build:
+       context: ./server/.
+     ports:
+       - 8181:8181
+     command: node index.js
